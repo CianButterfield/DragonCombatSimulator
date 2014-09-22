@@ -203,6 +203,13 @@ You have three options per turn: Sword, Magic, and Heal.
         {
             //end game where the user won, asks if they would like to slay another dragon
             Console.WriteLine("You have slain the dragon, good job.");
+
+             //give the user a moment to read
+            System.Threading.Thread.Sleep(3000);
+            //add high score
+            AddHighScore(userHP);
+            //display highscores
+            DisplayHighScores();
         }
 
         static void ItemPick()
@@ -238,6 +245,51 @@ You have three options per turn: Sword, Magic, and Heal.
         {
             //updates the screen each turn
             Console.Title = "Dragon Slayer   Dragon Health: " + dragonHP + "/" + dragonHPMax + "   Player Health: " + userHP + "/" + userHPMax;
+        }
+
+        static void AddHighScore(int playerScore)
+        {
+            Console.Clear();
+
+            //get player name for high score
+            Console.Write("Your name: "); string playerName = Console.ReadLine();
+
+            //create a gateway to the database
+            CianEntities db = new CianEntities();
+
+            //create a new high score object
+            // fill it with our user's data
+            HighScore newHighScore = new HighScore();
+            newHighScore.DateCreated = DateTime.Now;
+            newHighScore.Game = "Dragon Slayer";
+            newHighScore.Name = playerName;
+            newHighScore.Score = playerScore;
+
+            //add it to the database
+            db.HighScores.Add(newHighScore);
+
+            //save our changes
+            db.SaveChanges();
+        }
+
+        static void DisplayHighScores()
+        {
+            //clear the console
+            Console.Clear();
+            Console.Title = "ΦDragon Slayer ScoresΦ";
+            Console.WriteLine("Dragon Slayer Scores");
+            Console.WriteLine("≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡");
+
+            //create a new connection to the database
+            CianEntities db = new CianEntities();
+            //get the high score list
+            List<HighScore> highScoreList = db.HighScores.Where(x => x.Game == "Dragon Slayer").OrderByDescending(x => x.Score).Take(10).ToList();
+
+            foreach (HighScore highScore in highScoreList)
+            {
+                Console.WriteLine("{0}. {1} - {2}", highScoreList.IndexOf(highScore) + 1, highScore.Name, highScore.Score);
+            }
+            Console.ReadKey();
         }
     }
 }

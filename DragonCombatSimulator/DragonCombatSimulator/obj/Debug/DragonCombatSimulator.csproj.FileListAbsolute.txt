@@ -4,3 +4,5 @@ C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulat
 C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulator\DragonCombatSimulator\obj\Debug\DragonCombatSimulator.csprojResolveAssemblyReference.cache
 C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulator\DragonCombatSimulator\obj\Debug\DragonCombatSimulator.exe
 C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulator\DragonCombatSimulator\obj\Debug\DragonCombatSimulator.pdb
+C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulator\DragonCombatSimulator\bin\Debug\EntityFramework.dll
+C:\Users\Technologist\Documents\GitHub\DragonCombatSimulator\DragonCombatSimulator\DragonCombatSimulator\bin\Debug\EntityFramework.xml
